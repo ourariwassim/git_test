@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+df=pd.read_csv("cleaning.csv")
+
+
+
+df.dtypes
+
+df.shape
+
+df['Time']=pd.to_datetime(df['Time'])
+df['Colors Reported'].replace('RED',np.nan)
+(df['Colors Reported']=='VARIOUS').sum()
+
+
+columns=df.columns[df.isnull().all()]
++any
+
+df.rename(columns={'Colors Reported':'Couleur','Shape Reported':'Forme'},inplace=True)
+df=df.reindex(columns=['City','Forme','Couleur','State','Time'])
+df.dropna(thresh=1, inplace=True)
